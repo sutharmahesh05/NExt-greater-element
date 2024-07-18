@@ -1,0 +1,13 @@
+import java.util.Stack;
+
+int[] nge(int[] arr) {
+    int n = arr.length;
+    int[] res = new int[n];
+    Stack<Integer> s = new Stack<>();
+    for (int i = n - 1; i >= 0; i--) {
+        while (!s.empty() && arr[i] >= s.peek()) s.pop();
+        res[i] = s.empty() ? -1 : s.peek();
+        s.push(arr[i]);
+    }
+    return res;
+}
